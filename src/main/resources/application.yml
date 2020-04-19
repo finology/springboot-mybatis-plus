@@ -1,7 +1,7 @@
 spring:
   # jdbc配置
   datasource:
-    url: jdbc:mysql://localhost:3306/springboot-mybatis-plus?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://localhost:3306/springboot-mybatis-plus?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: '#Root123'
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,6 +10,34 @@ spring:
       initial-size: 5
       max-active: 5
       min-idle: 5
+
+  # rabbitmq 基本配置
+  rabbitmq:
+    addresses: 172.16.64.240
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 15000
+
+    # rabbitmq consumer 配置
+    listener:
+      simple:
+        concurrency: 5
+        max-concurrency: 10
+        # 需要代码ack
+        acknowledge-mode: manual
+        prefetch: 1
+
+    # producer 配置
+    publisher-confirm-type: correlated
+
+
+  jackson:
+    default-property-inclusion: non_null
+
+
+config:
+  fixDelay: 1000
 
 logging:
   level:

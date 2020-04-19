@@ -6,9 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.TimeZone;
 
 
 @SpringBootTest
@@ -22,26 +26,28 @@ class SpringbootMybatisPlusApplicationTests {
     }
 
     @Test
-    public void testSelect() {
+    void testSelect() {
 
         List<User> users = userMapper.selectList(null);
-        users.forEach(user -> System.out.println(user));
+        users.forEach(System.out::println);
     }
 
     @Test
-    public void inertOne() {
-        User user = User.builder().name("Simon").age(28).email("test3@abc.com").build();
+    void inertOne() {
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now);
+        User user = User.builder().name("Simon").age(28).email("test3@abc.com").birthday(now).build();
         userMapper.insert(user);
     }
 
     @Test
-    public void selectById() {
+    void selectById() {
         User user = userMapper.selectById(1247075853092757506L);
         System.out.println(user);
     }
 
     @Test
-    public void selectByIds() {
+    void selectByIds() {
 //        List<Long> list = Arrays.asList(1247075853092757506L, 1247078551494045697L);
         ArrayList<Long> list = new ArrayList<>();
         list.add(1247075853092757506L);
@@ -49,5 +55,6 @@ class SpringbootMybatisPlusApplicationTests {
 
         System.out.println(users);
     }
+
 
 }
