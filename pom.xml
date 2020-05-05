@@ -83,11 +83,23 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- 暂时借用学习的 -->
+        <!-- 暂时借用学习的, Springboot用redisTemplate -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>3.2.0</version>
+        </dependency>
+
+        <!-- Swagger配置 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
         </dependency>
 
     </dependencies>

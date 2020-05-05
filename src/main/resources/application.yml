@@ -41,7 +41,7 @@ config:
 
 logging:
   level:
-    root: warn
+    root: info
     gy.finolo.springbootmybatisplus.dao: trace
 #  pattern:
 #    console:

@@ -8,10 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.sql.DataSource;
 
 @SpringBootApplication(exclude = {RabbitAutoConfiguration.class})
+@EnableSwagger2
 @MapperScan("gy.finolo.springbootmybatisplus.dao")
 @Slf4j
 public class SpringbootMybatisPlusApplication implements CommandLineRunner {
