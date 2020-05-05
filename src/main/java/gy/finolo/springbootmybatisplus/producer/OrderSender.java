@@ -4,22 +4,28 @@ import gy.finolo.springbootmybatisplus.entity.Order;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("no_rabbit")
 public class OrderSender {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     // callback
-    final RabbitTemplate.ConfirmCallback confirmCallback = (correlationData, ack, cause) -> {
-        String messageIdStr = correlationData.getId();
-        System.out.println(messageIdStr);
-        if (ack) {
-            // db
-        } else {
-            // exception, queue error
+    private final RabbitTemplate.ConfirmCallback confirmCallback = (correlationData, ack, cause) -> {
+        if (correlationData != null) {
+            String messageIdStr = correlationData.getId();
+            System.out.println(messageIdStr);
+            if (ack) {
+                // db
+                System.out.println("here");
+            } else {
+                throw new RuntimeException("queue error");
+                // exception, queue error
+            }
         }
     };
 

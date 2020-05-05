@@ -5,11 +5,13 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {RabbitAutoConfiguration.class})
 @MapperScan("gy.finolo.springbootmybatisplus.dao")
 @Slf4j
 public class SpringbootMybatisPlusApplication implements CommandLineRunner {
@@ -22,7 +24,7 @@ public class SpringbootMybatisPlusApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         log.info("datasource: {}", dataSource);
     }
 }
