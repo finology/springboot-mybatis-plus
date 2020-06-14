@@ -2,6 +2,7 @@ package gy.finolo.springbootmybatisplus.controller;
 
 import gy.finolo.springbootmybatisplus.entity.User;
 import gy.finolo.springbootmybatisplus.model.AddUserRequest;
+import gy.finolo.springbootmybatisplus.model.BaseResponse;
 import gy.finolo.springbootmybatisplus.model.ListUserRequest;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +26,12 @@ public class UserController {
      * 根据条件查询 Users 列表
      */
     @GetMapping("")
-    public List<User> list(ListUserRequest request) {
+    public BaseResponse<List<User>> list(ListUserRequest request) {
         log.info("query...");
-        return userService.list(request);
+        List<User> users = userService.list(request);
+        return BaseResponse.<List<User>>builder()
+                .data(users)
+                .build();
     }
 
     /**

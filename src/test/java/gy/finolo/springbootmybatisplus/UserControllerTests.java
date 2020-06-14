@@ -34,7 +34,7 @@ public class UserControllerTests {
     void list() throws Exception {
         MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get("/users")
                 .contentType(MediaType.APPLICATION_JSON))
-                .param("name", "x"))
+                .param("name", "Simon"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
