@@ -8,6 +8,7 @@ import gy.finolo.springbootmybatisplus.model.AddUserRequest;
 import gy.finolo.springbootmybatisplus.model.ListUserRequest;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
@@ -30,6 +31,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
+    @Transactional
     public Boolean add(AddUserRequest request) {
         // 业务逻辑
         if (request == null) {
@@ -43,7 +45,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();
-        return super.save(user);
+        boolean res = super.save(user);
+//        int i = 1 / 0;
+        return res;
     }
 
 }

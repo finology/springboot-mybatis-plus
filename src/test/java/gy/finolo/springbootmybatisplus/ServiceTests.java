@@ -42,9 +42,10 @@ class ServiceTests {
 
     @Test
     void addUser2() {
-        AddUserRequest request = new AddUserRequest();
-        request.setName("hello");
-        request.setAge(27);
+        AddUserRequest request = AddUserRequest.builder()
+                .name("hello")
+                .age(27)
+                .build();
 
         User user = User.builder()
                 .name(request.getName())
