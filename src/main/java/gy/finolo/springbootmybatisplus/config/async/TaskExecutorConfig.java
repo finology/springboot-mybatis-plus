@@ -15,13 +15,14 @@ import java.util.concurrent.Executor;
  */
 @Configuration
 // 利用@EnableAsync注解开启异步任务支持
-@EnableAsync
+//@EnableAsync
 public class TaskExecutorConfig implements AsyncConfigurer {
 
     @Bean
     @Override
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        // TODO: 可以提取到配置文件
         taskExecutor.setCorePoolSize(10);
         taskExecutor.setMaxPoolSize(10);
         taskExecutor.setQueueCapacity(100);

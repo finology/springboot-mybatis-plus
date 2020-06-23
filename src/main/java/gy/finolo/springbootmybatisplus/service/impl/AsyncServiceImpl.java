@@ -6,6 +6,7 @@ import gy.finolo.springbootmybatisplus.model.AddUserRequest;
 import gy.finolo.springbootmybatisplus.service.AsyncService;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -34,6 +35,10 @@ public class AsyncServiceImpl implements AsyncService {
     @Autowired
     private TaskExecutorConfig config;
 
+    @Autowired
+    @Qualifier("getAsyncExecutor")
+    private Executor executor;
+
     @Override
     @Transactional
     public Map<String, Object> asyncWithReturn() {
@@ -47,7 +52,8 @@ public class AsyncServiceImpl implements AsyncService {
 
         long start = System.currentTimeMillis();
 
-        CompletionService<String> ecs = new ExecutorCompletionService(config.getAsyncExecutor());
+//        CompletionService<String> ecs = new ExecutorCompletionService(config.getAsyncExecutor());
+        CompletionService<String> ecs = new ExecutorCompletionService(executor);
         List<Future<String>> futures = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
@@ -66,14 +72,15 @@ public class AsyncServiceImpl implements AsyncService {
 
 //                    e.printStackTrace();
             } catch (ExecutionException e) {
-                System.out.println("ExecutionException");
+                System.out.println("ExecutionException: " + e.getMessage());
 //                    e.printStackTrace();
-            } finally {
                 for (Future<String> f : futures) {
                     if (!f.isDone()) {
+                        System.out.println("cancel future: " + f);
                         f.cancel(true);
                     }
                 }
+                throw new RuntimeException(e);
             }
 //                throw new RuntimeException("");
         }
@@ -98,9 +105,9 @@ public class AsyncServiceImpl implements AsyncService {
         @Override
         public String call() throws Exception {
 
-            if (i == 0) {
-                int j = 1 / 0;
-            }
+//            if (i == 2) {
+//                int j = 1 / 0;
+//            }
 
             try {
                 TimeUnit.SECONDS.sleep(3 - i);
