@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+// 注释掉Profile, 然后在启动类里删除掉对RabbitMQ的排除
 @Profile("no_rabbit")
 public class OrderSender {
 

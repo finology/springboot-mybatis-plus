@@ -13,6 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.sql.DataSource;
 
 @SpringBootApplication(exclude = {RabbitAutoConfiguration.class})
+//@SpringBootApplication
 @EnableSwagger2
 @MapperScan("gy.finolo.springbootmybatisplus.dao")
 @Slf4j

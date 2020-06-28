@@ -27,7 +27,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             throw new RuntimeException("List user request is null");
         }
 
-        return super.list(Wrappers.<User>lambdaQuery().eq(User::getName, request.getName()));
+        return super.list(Wrappers.<User>lambdaQuery().eq(User::getUsername, request.getName()));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         User user = User.builder()
-                .name(request.getName())
+                .username(request.getName())
                 .age(request.getAge())
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())

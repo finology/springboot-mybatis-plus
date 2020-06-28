@@ -5,22 +5,14 @@ import gy.finolo.springbootmybatisplus.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.TimeZone;
 
 
 @SpringBootTest
-@EnableAutoConfiguration(exclude = {RabbitAutoConfiguration.class})
 @Slf4j
 class SpringbootMybatisPlusApplicationTests {
 
@@ -43,7 +35,7 @@ class SpringbootMybatisPlusApplicationTests {
     void inertOne() {
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);
-        User user = User.builder().name("Simon").age(28).build();
+        User user = User.builder().username("Simon").age(28).build();
         userMapper.insert(user);
     }
 

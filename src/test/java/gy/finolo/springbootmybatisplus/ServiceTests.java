@@ -6,15 +6,12 @@ import gy.finolo.springbootmybatisplus.model.AddUserRequest;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
-@EnableAutoConfiguration(exclude = {RabbitAutoConfiguration.class})
 class ServiceTests {
 
     @Autowired
@@ -31,7 +28,7 @@ class ServiceTests {
     @Test
     void addUser() {
         User user = User.builder()
-                .name("hello")
+                .username("hello")
                 .age(26)
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
@@ -48,7 +45,7 @@ class ServiceTests {
                 .build();
 
         User user = User.builder()
-                .name(request.getName())
+                .username(request.getName())
                 .age(request.getAge())
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
