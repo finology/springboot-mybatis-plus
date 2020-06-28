@@ -46,3 +46,16 @@ logging:
 #  pattern:
 #    console:
 
+# ----------- actuator -----------
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: metrics, health, info
+
+info:
+  app-name: springboot-mybatis-plus
+  author: simon
