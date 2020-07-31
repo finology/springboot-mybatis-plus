@@ -24,13 +24,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @Slf4j
 public class UserControllerTests {
 
+    // 需要在类上加注解: @AutoConfigureMockMvc
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     void list() throws Exception {
-        MvcResult mvcResult = mockMvc.perform((MockMvcRequestBuilders.get("/users")
-                .contentType(MediaType.APPLICATION_JSON))
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/users")
+                .contentType(MediaType.APPLICATION_JSON)
                 .param("name", "Simon"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())

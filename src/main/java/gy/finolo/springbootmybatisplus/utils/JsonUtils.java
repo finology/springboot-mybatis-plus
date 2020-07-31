@@ -98,7 +98,7 @@ public class JsonUtils {
      * 如需反序列化复杂Collection如List<MyBean>, 请使用fromJson(String, JavaType)
      */
     public static <T> T fromJson(String jsonString, Class<T> clazz) {
-        if (StringUtils.hasText(jsonString)) {
+        if (!StringUtils.hasText(jsonString)) {
             return null;
         }
         try {
@@ -120,7 +120,7 @@ public class JsonUtils {
      */
     public static <L extends Collection<E>, E> L fromJson(String jsonString,
                                                           Class<L> collectionClass, Class<E> elementClass) {
-        if (StringUtils.hasText(jsonString)) {
+        if (!StringUtils.hasText(jsonString)) {
             return null;
         }
         try {
@@ -142,7 +142,7 @@ public class JsonUtils {
      * @return
      */
     public static <T> T fromJson(String jsonString, TypeReference<T> typeRef) {
-        if (StringUtils.hasText(jsonString)) {
+        if (!StringUtils.hasText(jsonString)) {
             return null;
         }
         try {
@@ -155,7 +155,7 @@ public class JsonUtils {
 
     public static <K, M extends Map<K, L>, L extends Collection<E>, E> M fromJson(String jsonString,
                                                                                   Class<M> mapClass, Class<L> collectionClass, Class<E> elementClass) {
-        if (StringUtils.hasText(jsonString)) {
+        if (!StringUtils.hasText(jsonString)) {
             return null;
         }
         try {
