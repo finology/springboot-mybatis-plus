@@ -11,6 +11,12 @@ spring:
       max-active: 5
       min-idle: 5
 
+  # redis
+  redis:
+    host: localhost
+    # port: 6379
+    timeout: 300
+
   # rabbitmq 基本配置
   rabbitmq:
     addresses: 172.16.64.240
