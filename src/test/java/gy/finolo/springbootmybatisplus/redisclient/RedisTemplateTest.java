@@ -10,14 +10,14 @@ import java.io.IOException;
 
 
 /**
- * @description:
+ * @description: redisTemplate测试类, 需要在主程序中去掉Exclude
  * @author: Simon
  * @date: 2020-08-29 10:14
  */
 @SpringBootTest
 public class RedisTemplateTest {
 
-    @Autowired
+    @Autowired(required = false)
 //    private RedisTemplate<String, Object> redisTemplate;
     private StringRedisTemplate redisTemplate;
 

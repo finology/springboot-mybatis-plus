@@ -8,11 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication(exclude = {RabbitAutoConfiguration.class})
+@SpringBootApplication(exclude = {RabbitAutoConfiguration.class, RedisAutoConfiguration.class})
 //@SpringBootApplication
 @EnableSwagger2
 @MapperScan("gy.finolo.springbootmybatisplus.dao")
