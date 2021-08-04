@@ -1,4 +1,4 @@
-package gy.finolo.springbootmybatisplus.model;
+package gy.finolo.springbootmybatisplus.model.vo.user;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,15 +1,13 @@
 package gy.finolo.springbootmybatisplus.service.impl;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import gy.finolo.springbootmybatisplus.config.async.TaskExecutorConfig;
-import gy.finolo.springbootmybatisplus.model.AddUserRequest;
+import gy.finolo.springbootmybatisplus.model.vo.user.AddUserRequest;
 import gy.finolo.springbootmybatisplus.service.AsyncService;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

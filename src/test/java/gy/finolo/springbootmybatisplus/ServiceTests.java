@@ -2,7 +2,7 @@ package gy.finolo.springbootmybatisplus;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import gy.finolo.springbootmybatisplus.entity.User;
-import gy.finolo.springbootmybatisplus.model.AddUserRequest;
+import gy.finolo.springbootmybatisplus.model.vo.user.AddUserRequest;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

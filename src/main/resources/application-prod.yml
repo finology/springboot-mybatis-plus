@@ -1,7 +1,4 @@
 spring:
-  profiles:
-    active: dev
-
   # jdbc配置
   datasource:
     url: jdbc:mysql://localhost:3306/springboot-mybatis-plus?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
