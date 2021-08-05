@@ -18,6 +18,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .anyRequest()
-                .permitAll();
+                .permitAll()
+                // spring security默认开启了防止csrf跨站脚本攻击
+                .and()
+                .csrf()
+                .disable();
+
     }
 }

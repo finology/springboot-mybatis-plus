@@ -37,7 +37,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         if (request.getName() == null) {
             users = super.list();
-            throw new AppException(ErrorMessageEnum.INTERNAL_ERROR);
         } else {
             users = super.list(Wrappers.<User>lambdaQuery().eq(User::getUsername, request.getName()));
         }

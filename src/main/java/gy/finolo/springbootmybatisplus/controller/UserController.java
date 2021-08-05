@@ -1,10 +1,12 @@
 package gy.finolo.springbootmybatisplus.controller;
 
 import gy.finolo.springbootmybatisplus.entity.User;
+import gy.finolo.springbootmybatisplus.model.vo.logMessage.ReportLogMessageRequest;
 import gy.finolo.springbootmybatisplus.model.vo.user.AddUserRequest;
 import gy.finolo.springbootmybatisplus.common.Response;
 import gy.finolo.springbootmybatisplus.model.vo.user.UserListRequest;
 import gy.finolo.springbootmybatisplus.model.vo.user.UserVo;
+import gy.finolo.springbootmybatisplus.service.LogMessageService;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LogMessageService logMessageService;
 
     /**
      * 根据条件查询 Users 列表
