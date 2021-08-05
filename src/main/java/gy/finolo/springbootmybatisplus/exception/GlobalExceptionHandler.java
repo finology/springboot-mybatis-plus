@@ -34,6 +34,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             ConstraintViolation<?> violation = ((ConstraintViolationException) e).getConstraintViolations().iterator().next();
             String message = violation.getMessage();
             String[] codeAndMessage = message.split("=");
+            if (codeAndMessage.length != 2) {
+                return Response.fail(9999, "出错信息格式不对");
+            }
             response.setStatus(HttpStatus.BAD_REQUEST.value());
             return Response.fail(Integer.valueOf(codeAndMessage[0]), codeAndMessage[1]);
         }

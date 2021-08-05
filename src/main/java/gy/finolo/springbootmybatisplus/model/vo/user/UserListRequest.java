@@ -23,7 +23,7 @@ public class UserListRequest {
     }
 
     @NotBlank(groups = ValidGroup1.class)
-    @NotBlank(message = "Not blank")
+    @NotBlank(message = "10011=Not blank")
     @Size(min = 3, max = 5, groups = UserListRequest.ValidGroup2.class, message = "10010=参数必须在3-5之间")
 //    @Size(min = 3, max = 5)
     private String name;

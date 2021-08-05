@@ -2,10 +2,8 @@ package gy.finolo.springbootmybatisplus.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import gy.finolo.springbootmybatisplus.common.ErrorMessageEnum;
 import gy.finolo.springbootmybatisplus.dao.UserMapper;
 import gy.finolo.springbootmybatisplus.entity.User;
-import gy.finolo.springbootmybatisplus.exception.AppException;
 import gy.finolo.springbootmybatisplus.model.vo.user.AddUserRequest;
 import gy.finolo.springbootmybatisplus.model.vo.user.UserListRequest;
 import gy.finolo.springbootmybatisplus.model.vo.user.UserVo;
@@ -15,18 +13,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+// ServiceImpl加Validated注解, 如果有分组校验，那在方法上, 如果参数为类类型, 那在接口和实现类的方法参数前面加Valid
 @Validated
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Override
 
-//    public List<User> list(@Valid UserListRequest request) {
     @Validated(UserListRequest.ValidGroup2.class)
-    public List<UserVo> list(UserListRequest request) {
+    public List<UserVo> list(@Valid UserListRequest request) {
 
 //        不需要判断request, 一定不会为null
 //        if (request == null) {
@@ -48,12 +47,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     @Transactional
-    public Boolean add(AddUserRequest request) {
-        // 业务逻辑
-        if (request == null) {
-            // TODO: exception handle
-            throw new RuntimeException("Add user request is null");
-        }
+    public Boolean add(@Valid AddUserRequest request) {
 
         User user = User.builder()
                 .username(request.getName())
