@@ -13,6 +13,6 @@ public interface UserService extends IService<User> {
 
     List<UserVo> list(@Valid UserListRequest request);
 
-    Boolean add(AddUserRequest request);
+    Boolean add(@Valid AddUserRequest request);
 
 }
