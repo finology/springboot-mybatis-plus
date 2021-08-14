@@ -77,14 +77,20 @@ spring:
   jackson:
     default-property-inclusion: non_null
 
+# mybatis-plus打印sql查询语句, 参数和结果的配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 config:
   fixDelay: 1000
 
 logging:
+  config: classpath:log4j2.xml
   level:
     root: info
     gy.finolo.springbootmybatisplus.dao: trace
+
 #  pattern:
 #    console:
 
