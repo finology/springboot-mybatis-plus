@@ -58,5 +58,12 @@ public class UserController {
         userService.add(request);
     }
 
+    // 测试Annotation加反射调用
+    public Response test(UserListRequest request, Long id) {
+
+        System.out.println(request + " " + id);
+
+        return Response.success(id + " " + request);
+    }
 
 }
