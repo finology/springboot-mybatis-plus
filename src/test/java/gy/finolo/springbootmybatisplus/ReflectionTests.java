@@ -1,5 +1,7 @@
 package gy.finolo.springbootmybatisplus;
 
+import gy.finolo.springbootmybatisplus.common.MyMethod;
+import gy.finolo.springbootmybatisplus.config.MyAnnotationScanner;
 import gy.finolo.springbootmybatisplus.controller.UserController;
 import gy.finolo.springbootmybatisplus.model.vo.user.UserListRequest;
 import gy.finolo.springbootmybatisplus.utils.SpringContextUtils;
@@ -9,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.Type;
 
 /**
  * @description: 反射调用测试
@@ -18,8 +22,29 @@ import java.lang.reflect.Method;
 @SpringBootTest
 public class ReflectionTests {
 
-//    @Autowired
+    //    @Autowired
 //    private UserController userController;
+    @Test
+    void testAnotherMethodCall() throws InvocationTargetException, IllegalAccessException {
+
+        String commandId = "1";
+        UserListRequest userListRequest = new UserListRequest();
+        userListRequest.setName("hello");
+        Object arg1 = userListRequest;
+        Object arg2 = 10L;
+
+        MyMethod myMethod = MyAnnotationScanner.idMethodMap.get("1");
+        String beanName = myMethod.getBeanName();
+        Object bean = SpringContextUtils.getBean(beanName);
+        Method method = myMethod.getMethod();
+        Class<?>[] parameterTypes = method.getParameterTypes();
+
+        Object a1 = parameterTypes[0].cast(arg1);
+        Object a2 = parameterTypes[1].cast(arg2);
+
+        Object result = method.invoke(bean, a1, a2);
+        System.out.println(result);
+    }
 
     @Test
     void testReflectionMethodCall() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {

@@ -1,6 +1,7 @@
 package gy.finolo.springbootmybatisplus.controller;
 
 import gy.finolo.springbootmybatisplus.common.Response;
+import gy.finolo.springbootmybatisplus.common.annotation.MyAnnotation;
 import gy.finolo.springbootmybatisplus.entity.User;
 import gy.finolo.springbootmybatisplus.model.vo.user.AddUserRequest;
 import gy.finolo.springbootmybatisplus.model.vo.user.UserListRequest;
@@ -59,11 +60,20 @@ public class UserController {
     }
 
     // 测试Annotation加反射调用
+    @MyAnnotation(commandId = "1")
     public Response test(UserListRequest request, Long id) {
 
-        System.out.println(request + " " + id);
+        System.out.println("test1 " + request + " " + id);
 
-        return Response.success(id + " " + request);
+        return Response.success("test1 " + id + " " + request);
+    }
+
+    @MyAnnotation(commandId = "2")
+    public Response test(Long id, UserListRequest request) {
+
+        System.out.println("test2 " + request + " " + id);
+
+        return Response.success("test2 " + id + " " + request);
     }
 
 }
