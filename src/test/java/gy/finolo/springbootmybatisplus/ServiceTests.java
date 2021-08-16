@@ -3,6 +3,8 @@ package gy.finolo.springbootmybatisplus;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import gy.finolo.springbootmybatisplus.entity.User;
 import gy.finolo.springbootmybatisplus.model.vo.user.AddUserRequest;
+import gy.finolo.springbootmybatisplus.model.vo.user.UserListRequest;
+import gy.finolo.springbootmybatisplus.model.vo.user.UserVo;
 import gy.finolo.springbootmybatisplus.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,14 @@ class ServiceTests {
         List<User> users = userService.list(Wrappers.<User>lambdaQuery().gt(User::getAge, 25));
         users.forEach(System.out::println);
 
+    }
+
+    @Test
+    void testList() {
+        UserListRequest userListRequest = new UserListRequest();
+        userListRequest.setName("hello");
+        List<UserVo> userVos = userService.list(userListRequest);
+        userVos.forEach(userVo -> System.out.println(userVo));
     }
 
     @Test

@@ -1,12 +1,12 @@
 1. 数据库连接池 - Done
 2. Mybatis Plus - 需要下载官方 sample 全面学习
 3. Mybatis 翻页
-4. BaseMapper, BaseService
-5. 日志打印 sql
+4. BaseMapper, BaseService - Done
+5. 日志打印 sql - Done
 6. AOP 日志打印接口耗时
-7. 异常 - 先查看AI文件管理系统的处理方法后，再学习两个视频中的方法 @RestControllerAdvice
+7. 异常 - 先查看AI文件管理系统的处理方法后，再学习两个视频中的方法 @RestControllerAdvice - Done
 
-1. 通用返回类设计
+1. 通用返回类设计 - Done
 
 BaseResponse<T> {
     int code
