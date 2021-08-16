@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 @SpringBootApplication(exclude = {RabbitAutoConfiguration.class, RedisAutoConfiguration.class})
 //@SpringBootApplication
-@EnableSwagger2
+//@EnableSwagger2
 @MapperScan("gy.finolo.springbootmybatisplus.dao")
 @Slf4j
 public class SpringbootMybatisPlusApplication implements CommandLineRunner {

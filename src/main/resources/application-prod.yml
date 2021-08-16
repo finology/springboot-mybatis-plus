@@ -44,6 +44,8 @@ spring:
   jackson:
     default-property-inclusion: non_null
 
+elasticsearch:
+  hosts: localhost:9200
 
 config:
   fixDelay: 1000

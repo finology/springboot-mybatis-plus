@@ -30,6 +30,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Response exceptionHandler(HttpServletResponse response, Exception e) {
 
+        e.printStackTrace();
+
         if (e instanceof ConstraintViolationException) {
             ConstraintViolation<?> violation = ((ConstraintViolationException) e).getConstraintViolations().iterator().next();
             String message = violation.getMessage();
